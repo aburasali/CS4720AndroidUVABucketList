@@ -2,5 +2,15 @@
     <string name="app_name">UVA Bucket List</string>
 
     <string name="hello_world">Hello world!</string>
+    
     <string name="action_settings">Settings</string>
+    
+    <string-array name="bucket_list_items">
+        <item>Streak the Lawn</item>
+        <item>Eat Bodo's</item>
+        <item>Take a Mark Sherriff class</item>
+        <item>Work hard</item>
+        <item>Make lots of friends</item>
+    </string-array>
+
 </resources>

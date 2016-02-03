@@ -1,16 +1,22 @@
 package com.example.john.cs4720androiduvabucketlist;
 
+import java.util.ArrayList;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-
+import android.widget.*;
 public class MainActivity extends Activity {
+    //Declared bucket list items
+    ArrayList<String> bucketListItems = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ListView chklst = (ListView) findViewById(R.id.checkableList);
+        chklst.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+
     }
 
     @Override
