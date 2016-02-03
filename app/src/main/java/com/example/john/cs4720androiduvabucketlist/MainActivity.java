@@ -7,8 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.*;
 public class MainActivity extends Activity {
-    //Declared bucket list items
-    ArrayList<String> bucketListItems = new ArrayList<String>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,7 +15,11 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         ListView chklst = (ListView) findViewById(R.id.checkableList);
         chklst.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
-
+        //Declared bucket list items
+        String[] bucket_list_items = getResources().getStringArray(R.array.bucket_list_items);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                R.layout.list_layout, R.id.bucketList, bucket_list_items);
+        chklst.setAdapter(adapter);
     }
 
     @Override
