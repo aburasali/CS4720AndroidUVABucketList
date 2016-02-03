@@ -2,12 +2,14 @@ package com.example.john.cs4720androiduvabucketlist;
 
 import java.util.ArrayList;
 import android.app.Activity;
+import android.app.ListActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
+import android.view.*;
 public class MainActivity extends Activity {
     protected ArrayList<listItem> bList = new ArrayList<listItem>();
 
@@ -29,10 +31,19 @@ public class MainActivity extends Activity {
         for(listItem thing: bList){
             Log.i("checks", thing.getName());
         }
-        CustomAdapter adapter = new CustomAdapter(this, R.layout.custom_adapter, bList);
+        final CustomAdapter adapter = new CustomAdapter(this, R.layout.custom_adapter, bList);
         chklst.setAdapter(adapter);
+        chklst.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> av, View view, int i, long l) {
+                if(bList.get((int)l).getSelected()){
+                    bList.get((int)l).setSelected(false);
+                }else{
+                    bList.get((int)l).setSelected(true);
+                }
+                adapter.notifyDataSetChanged();
+            }
+        });
 
-        
 //        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
 //                R.layout.list_layout, R.id.bucketList, bucket_list_items);
 //        chklst.setAdapter(adapter);
@@ -59,4 +70,9 @@ public class MainActivity extends Activity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
+//    public void onListItemClick(ListView l, View v, int position, long id) {
+//
+//    }
 }
