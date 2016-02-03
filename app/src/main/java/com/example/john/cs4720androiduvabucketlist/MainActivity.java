@@ -3,23 +3,36 @@ package com.example.john.cs4720androiduvabucketlist;
 import java.util.ArrayList;
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.*;
 public class MainActivity extends Activity {
-
+    protected ArrayList<listItem> bList = new ArrayList<listItem>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         ListView chklst = (ListView) findViewById(R.id.checkableList);
-        chklst.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+        //chklst.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+
         //Declared bucket list items
         String[] bucket_list_items = getResources().getStringArray(R.array.bucket_list_items);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                R.layout.list_layout, R.id.bucketList, bucket_list_items);
+
+        for (int i = 0; i < bucket_list_items.length; i++) {
+            listItem temp = new listItem(bucket_list_items[i], "");
+            bList.add(temp);
+        }
+        for(listItem thing: bList){
+            Log.i("checks", thing.getName());
+        }
+        CustomAdapter adapter = new CustomAdapter(this, bList);
         chklst.setAdapter(adapter);
+//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+//                R.layout.list_layout, R.id.bucketList, bucket_list_items);
+//        chklst.setAdapter(adapter);
     }
 
     @Override

@@ -23,7 +23,18 @@ public class listItem {
     }
 
     /* Getters & Setters */
-    
+    public String getName () {
+        return name;
+    }
+    public String getInfo () {
+        return info;
+    }
+    public boolean getSelected () {
+        return selected;
+    }
+    public void setSelected(boolean s) {
+        selected = s;
+    }
     /* Utility Methods */
     public void checkOff() {
         if (selected == false) selected = true;
