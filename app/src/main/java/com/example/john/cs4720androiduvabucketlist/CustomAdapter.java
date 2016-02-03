@@ -1,6 +1,7 @@
 package com.example.john.cs4720androiduvabucketlist;
 
 import android.content.Context;
+import android.util.Log;
 import android.widget.*;
 import java.util.*;
 import android.view.*;
@@ -16,8 +17,8 @@ public class CustomAdapter extends ArrayAdapter<listItem> {
 
     /* Constructor */
 
-    public CustomAdapter(Activity context, ArrayList<listItem> ls) {
-        super(context, R.layout.custom_adapter);
+    public CustomAdapter(Activity context,int resource, ArrayList<listItem> ls) {
+        super(context, resource, ls);
         list = ls;
         this.context = context;
     }
@@ -37,10 +38,9 @@ public class CustomAdapter extends ArrayAdapter<listItem> {
         TextView number = (TextView)convertView.findViewById(R.id.number);
         CheckedTextView isChecked = (CheckedTextView)convertView.findViewById(R.id.bucketList);
 
-        number.setText(""+position +1);
+        number.setText(""+ (position +1) + ".");
         itemName.setText(list.get(position).name);
         isChecked.setChecked(list.get(position).selected);
-
         return convertView;
     }
 

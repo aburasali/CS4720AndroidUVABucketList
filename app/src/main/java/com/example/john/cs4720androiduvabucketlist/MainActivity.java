@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.*;
 public class MainActivity extends Activity {
     protected ArrayList<listItem> bList = new ArrayList<listItem>();
@@ -28,8 +29,10 @@ public class MainActivity extends Activity {
         for(listItem thing: bList){
             Log.i("checks", thing.getName());
         }
-        CustomAdapter adapter = new CustomAdapter(this, bList);
+        CustomAdapter adapter = new CustomAdapter(this, R.layout.custom_adapter, bList);
         chklst.setAdapter(adapter);
+
+        
 //        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
 //                R.layout.list_layout, R.id.bucketList, bucket_list_items);
 //        chklst.setAdapter(adapter);
