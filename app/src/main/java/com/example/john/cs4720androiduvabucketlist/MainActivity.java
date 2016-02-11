@@ -1,15 +1,16 @@
 package com.example.john.cs4720androiduvabucketlist;
 
-import java.util.ArrayList;
 import android.app.Activity;
-import android.app.ListActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.*;
-import android.view.*;
+import android.widget.AdapterView;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 public class MainActivity extends Activity {
     protected ArrayList<listItem> bList = new ArrayList<listItem>();
 
@@ -23,9 +24,10 @@ public class MainActivity extends Activity {
 
         //Declared bucket list items
         String[] bucket_list_items = getResources().getStringArray(R.array.bucket_list_items);
+        String[] info = getResources().getStringArray(R.array.info);
 
         for (int i = 0; i < bucket_list_items.length; i++) {
-            listItem temp = new listItem(bucket_list_items[i], "");
+            listItem temp = new listItem(bucket_list_items[i], info[i]);
             bList.add(temp);
         }
         for(listItem thing: bList){
@@ -35,12 +37,15 @@ public class MainActivity extends Activity {
         chklst.setAdapter(adapter);
         chklst.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> av, View view, int i, long l) {
-                if(bList.get((int)l).getSelected()){
-                    bList.get((int)l).setSelected(false);
-                }else{
-                    bList.get((int)l).setSelected(true);
-                }
-                adapter.notifyDataSetChanged();
+                Intent intent = new Intent(MainActivity.this , DetailView.class);
+                intent.putExtra("object",bList.get((int)l));
+                startActivity(intent);
+//                if(bList.get((int)l).getSelected()){
+//                    bList.get((int)l).setSelected(false);
+//                }else{
+//                    bList.get((int)l).setSelected(true);
+//                }
+//                adapter.notifyDataSetChanged();
             }
         });
 

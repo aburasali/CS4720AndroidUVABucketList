@@ -1,11 +1,15 @@
 package com.example.john.cs4720androiduvabucketlist;
 
-import android.content.Context;
-import android.util.Log;
-import android.widget.*;
-import java.util.*;
-import android.view.*;
-import android.app.*;
+import android.app.Activity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.CheckedTextView;
+import android.widget.TextView;
+
+import java.util.ArrayList;
+
 /**
  * Created by John on 2/2/16.
  */
@@ -13,7 +17,6 @@ public class CustomAdapter extends ArrayAdapter<listItem> {
     /* Fields */
     private ArrayList<listItem> list;
     private final Activity context;
-
 
     /* Constructor */
 
@@ -41,6 +44,12 @@ public class CustomAdapter extends ArrayAdapter<listItem> {
         number.setText(""+ (position +1) + ".");
         itemName.setText(list.get(position).name);
         isChecked.setChecked(list.get(position).selected);
+//        final listItem Litem = list.get(position);
+//        isChecked.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//                Litem.checkOff();
+//            }
+//        });
         return convertView;
     }
 

@@ -2,9 +2,9 @@
     <string name="app_name">UVA Bucket List</string>
 
     <string name="hello_world">Hello world!</string>
-    
+
     <string name="action_settings">Settings</string>
-    
+
     <string-array name="bucket_list_items">
         <item>Streak the Lawn</item>
         <item>Eat Bodo\'s</item>
@@ -12,5 +12,13 @@
         <item>Work hard</item>
         <item>Make lots of friends</item>
     </string-array>
+    <string-array name="info">
+        <item>Run across the lawn naked</item>
+        <item>Get the first ticket and then eat it the bagel</item>
+        <item>Enroll in a class taught by Sherriff</item>
+        <item>Spend time working hard</item>
+        <item>Be friends with a lot of people</item>
+    </string-array>
+    <string name="title_activity_detail_view">DetailView</string>
 
 </resources>
