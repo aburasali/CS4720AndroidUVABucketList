@@ -44,6 +44,7 @@ public class listItem implements Parcelable{
         else { selected = false; }
     }
 
+    /* By making this object parcelable, we can add it to an intent to push from activity to another  */
     @Override
     public int describeContents() {
         return 0;

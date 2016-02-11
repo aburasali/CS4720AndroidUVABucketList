@@ -37,6 +37,7 @@ public class MainActivity extends Activity {
         chklst.setAdapter(adapter);
         chklst.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> av, View view, int i, long l) {
+                //Intent to go to the detail view
                 Intent intent = new Intent(MainActivity.this , DetailView.class);
                 intent.putExtra("object",bList.get((int)l));
                 startActivity(intent);

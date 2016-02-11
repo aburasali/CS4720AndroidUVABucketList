@@ -44,6 +44,8 @@ public class CustomAdapter extends ArrayAdapter<listItem> {
         number.setText(""+ (position +1) + ".");
         itemName.setText(list.get(position).name);
         isChecked.setChecked(list.get(position).selected);
+
+        //this onclick listener is meant to allow for checkbox clicking
 //        final listItem Litem = list.get(position);
 //        isChecked.setOnClickListener(new View.OnClickListener() {
 //            public void onClick(View v) {
