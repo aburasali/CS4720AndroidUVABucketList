@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="60dp">
 
     <CheckedTextView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/bucketList"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:checkMark="?android:attr/listChoiceIndicatorMultiple"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="13dp"
+        android:layout_alignParentRight="true"
         />
     <TextView
         android:id="@+id/number"

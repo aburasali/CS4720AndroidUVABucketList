@@ -11,6 +11,11 @@
         <item>Take a Mark Sherriff class</item>
         <item>Work hard</item>
         <item>Make lots of friends</item>
+        <item>Get Dean\'s list</item>
+        <item>High five cool guy</item>
+        <item>Do cool things</item>
+        <item>Eat christian\'s</item>
+        <item>Go to gym</item>
     </string-array>
     <string-array name="info">
         <item>Run across the lawn naked</item>
@@ -18,7 +23,12 @@
         <item>Enroll in a class taught by Sherriff</item>
         <item>Spend time working hard</item>
         <item>Be friends with a lot of people</item>
+        <item>Get above a 3.5 with 15 credits</item>
+        <item>High five dean groves </item>
+        <item>Do cool stuff around UVA</item>
+        <item>Grab a slice of pizza from christian\'s pizza</item>
+        <item>Pick up heavy things then put them down</item>
     </string-array>
-    <string name="title_activity_detail_view">DetailView</string>
+    <string name="title_activity_detail_view">Details</string>
 
 </resources>

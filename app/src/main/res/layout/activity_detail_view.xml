@@ -28,6 +28,13 @@
         android:layout_marginTop="30dp"
         android:layout_below="@+id/item2"
         android:id="@+id/item3"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:id="@+id/check"
+        android:onClick="markAsDone"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/item3"/>
 
 
 </RelativeLayout>

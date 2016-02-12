@@ -3,7 +3,6 @@ package com.example.john.cs4720androiduvabucketlist;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,27 +12,30 @@ import android.widget.ListView;
 import java.util.ArrayList;
 public class MainActivity extends Activity {
     protected ArrayList<listItem> bList = new ArrayList<listItem>();
-
+    public CustomAdapter adapter;
+    ListView chklst;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ListView chklst = (ListView) findViewById(R.id.checkableList);
+         chklst = (ListView) findViewById(R.id.checkableList);
         //chklst.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 
         //Declared bucket list items
         String[] bucket_list_items = getResources().getStringArray(R.array.bucket_list_items);
         String[] info = getResources().getStringArray(R.array.info);
-
-        for (int i = 0; i < bucket_list_items.length; i++) {
-            listItem temp = new listItem(bucket_list_items[i], info[i]);
-            bList.add(temp);
+        if(bList.isEmpty()) {
+            for (int i = 0; i < bucket_list_items.length; i++) {
+                listItem temp = new listItem(bucket_list_items[i], info[i]);
+                bList.add(temp);
+            }
+//            for (listItem thing : bList) {
+//                Log.i("checks", thing.getName());
+//            }
         }
-        for(listItem thing: bList){
-            Log.i("checks", thing.getName());
-        }
-        final CustomAdapter adapter = new CustomAdapter(this, R.layout.custom_adapter, bList);
+        //final CustomAdapter
+        adapter = new CustomAdapter(this, R.layout.custom_adapter, bList);
         chklst.setAdapter(adapter);
         chklst.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> av, View view, int i, long l) {
@@ -77,8 +79,23 @@ public class MainActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+//        outState.putParcelableArrayList("list",bList);
+    }
 
-//    public void onListItemClick(ListView l, View v, int position, long id) {
-//
-//    }
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+//        bList = savedInstanceState.getParcelableArrayList("list");
+//        chklst.setAdapter(adapter);
+//        adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        adapter.notifyDataSetChanged();
+    }
 }

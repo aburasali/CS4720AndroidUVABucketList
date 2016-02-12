@@ -1,6 +1,7 @@
 package com.example.john.cs4720androiduvabucketlist;
 
 import android.app.Activity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,12 +47,14 @@ public class CustomAdapter extends ArrayAdapter<listItem> {
         isChecked.setChecked(list.get(position).selected);
 
         //this onclick listener is meant to allow for checkbox clicking
-//        final listItem Litem = list.get(position);
-//        isChecked.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//                Litem.checkOff();
-//            }
-//        });
+        final listItem Litem = list.get(position);
+        isChecked.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Litem.checkOff();
+                notifyDataSetChanged();
+                Log.d("Bool Check", ""+Litem.getSelected());
+            }
+        });
         return convertView;
     }
 

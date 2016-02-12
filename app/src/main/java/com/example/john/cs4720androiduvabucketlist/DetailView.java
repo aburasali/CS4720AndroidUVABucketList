@@ -3,24 +3,51 @@ package com.example.john.cs4720androiduvabucketlist;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class DetailView extends Activity {
+
+    listItem Litem;
+    Button butt;
+    TextView dv2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_view);
         Intent i = getIntent();
-        listItem Litem = (listItem) i.getParcelableExtra("object");
+        Litem = (listItem) i.getParcelableExtra("object");
+
+        setTitle(Litem.getName() + " details");
 
         TextView dv1 = (TextView)findViewById(R.id.item);
-        TextView dv2 = (TextView)findViewById(R.id.item2);
+        dv2 = (TextView)findViewById(R.id.item2);
         TextView dv3 = (TextView)findViewById(R.id.item3);
-
+        butt = (Button)findViewById(R.id.check);
+        if(Litem.getSelected()){
+            butt.setText("Mark as incomplete");
+        }else{
+            butt.setText("Mark as done");
+        }
         dv1.setText(Litem.getName());
         dv2.setText(Litem.getSelected()+"");
         dv3.setText(Litem.getInfo());
+
+    }
+
+    public void markAsDone(View view){
+        if(Litem.getSelected()){
+            Litem.setSelected(false);
+            butt.setText("Mark as done");
+            dv2.setText(Litem.getSelected()+"");
+
+        }else{
+            Litem.setSelected(true);
+            butt.setText("Mark as incomplete");
+            dv2.setText(Litem.getSelected()+"");
+        }
 
     }
 
