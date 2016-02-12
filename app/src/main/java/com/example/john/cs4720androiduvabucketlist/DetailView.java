@@ -28,11 +28,12 @@ public class DetailView extends Activity {
         butt = (Button)findViewById(R.id.check);
         if(Litem.getSelected()){
             butt.setText("Mark as incomplete");
+            dv2.setText("Currently done!");
         }else{
             butt.setText("Mark as done");
+            dv2.setText("Currently incomplete!");
         }
         dv1.setText(Litem.getName());
-        dv2.setText(Litem.getSelected()+"");
         dv3.setText(Litem.getInfo());
 
     }
@@ -41,14 +42,24 @@ public class DetailView extends Activity {
         if(Litem.getSelected()){
             Litem.setSelected(false);
             butt.setText("Mark as done");
-            dv2.setText(Litem.getSelected()+"");
+            dv2.setText("Currently incomplete!");
 
         }else{
             Litem.setSelected(true);
             butt.setText("Mark as incomplete");
-            dv2.setText(Litem.getSelected()+"");
+            dv2.setText("Currently done!");
         }
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        boolean[] data = new boolean[1];
+        data[0] = Litem.getSelected();
+        Intent intent = new Intent();
+        intent.putExtra("MyData", data);
+        setResult(RESULT_OK, intent);
+        finish();
     }
 
 }

@@ -3,6 +3,7 @@ package com.example.john.cs4720androiduvabucketlist;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,6 +15,7 @@ public class MainActivity extends Activity {
     protected ArrayList<listItem> bList = new ArrayList<listItem>();
     public CustomAdapter adapter;
     ListView chklst;
+    public int posChanged;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,9 +42,10 @@ public class MainActivity extends Activity {
         chklst.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> av, View view, int i, long l) {
                 //Intent to go to the detail view
+                posChanged = (int) l;
                 Intent intent = new Intent(MainActivity.this , DetailView.class);
                 intent.putExtra("object",bList.get((int)l));
-                startActivity(intent);
+                startActivityForResult(intent, 1);
 //                if(bList.get((int)l).getSelected()){
 //                    bList.get((int)l).setSelected(false);
 //                }else{
@@ -55,6 +58,18 @@ public class MainActivity extends Activity {
 //        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
 //                R.layout.list_layout, R.id.bucketList, bucket_list_items);
 //        chklst.setAdapter(adapter);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            if(resultCode == RESULT_OK){
+                boolean[] b = data.getBooleanArrayExtra("MyData");
+                bList.get(posChanged).setSelected(b[0]);
+                Log.d("ActForRes", ""+b[0]);
+            }
+        }
     }
 
     @Override
